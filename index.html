@@ -81,8 +81,10 @@
             height: 100%;
             overflow: auto;
             background-color: rgba(0,0,0,0.5); /* Fundo translúcido */
-            align-items: center;
-            justify-content: center;
+            align-items: center; /* Para centralizar o modal-content verticalmente */
+            justify-content: center; /* Para centralizar o modal-content horizontalmente */
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
         }
 
         .modal-content {
