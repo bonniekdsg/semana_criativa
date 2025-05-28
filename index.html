@@ -68,8 +68,35 @@
         .hero-image {
             max-width: 100%;
             height: auto;
+            transition: transform 0.3s ease-out;
         }
 
+        /* Efeito de hover para imagens principais da hero e pincel */
+        #hero .hero-main-images-container .hero-image:hover,
+        #hero .hero-brush-container .hero-image:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Efeito de hover para elementos flutuantes (a imagem dentro do .hero-element) */
+        /* A animação de float já move o .hero-element, então vamos aplicar o hover sutil na imagem interna */
+        #hero .hero-element .hero-image:hover {
+             transform: scale(1.05); /* Apenas um leve zoom para não conflitar com o float */
+        }
+        
+        .hero-brush-container {
+            /* Esta classe agora é apenas um marcador, a animação está em .hero-element */
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            cursor: pointer; /* Adicionado para indicar que é clicável */
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
         /* Estilos do Modal */
         .modal {
             display: none; /* Oculto por padrão */
