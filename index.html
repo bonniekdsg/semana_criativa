@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana Criativa 2025 - MPAC | SeringalLab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-element {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: 
+                fadeInUp 0.8s ease-out forwards,
+                float 3s ease-in-out infinite;
+        }
+
+        .hero-element-static {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .hero-element-1 { animation-delay: 0.2s; }
+        .hero-element-2 { animation-delay: 0.4s; }
+        .hero-element-3 { animation-delay: 0.6s; }
+        .hero-element-4 { animation-delay: 0.8s; }
+        .hero-element-5 { animation-delay: 1.0s; }
+        .hero-element-6 { animation-delay: 1.2s; }
+        
+        .floating {
+            /* Esta classe agora é apenas um marcador, a animação está em .hero-element */
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            cursor: pointer; /* Adicionado para indicar que é clicável */
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Estilos do Modal */
+        .modal {
+            display: none; /* Oculto por padrão */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5); /* Fundo translúcido */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: fadeInModal 0.3s ease-out;
+        }
+
+        @keyframes fadeInModal {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Hero Section -->
+    <section class="relative w-full overflow-hidden mx-auto" style="height: 600px; max-width: 1920px; background-color: #f2eadd;">
+        <div class="flex justify-center items-center h-full">
+            <img src="https://static.wixstatic.com/media/c96204_cb9ce5b3da0f47d8a21d23fe5f30b31a~mv2.png" 
+                 alt="Imagem Hero 1" 
+                 class="hero-image h-auto object-contain m-2 hero-element-static hero-element-4" 
+                 style="max-width: 22.5%;">
+            <img src="https://static.wixstatic.com/media/c96204_92992c3bc14b40a4a733dfc86b2c21e2~mv2.png" 
+                 alt="Imagem Hero 2" 
+                 class="hero-image h-auto object-contain m-2 hero-element-static hero-element-5" 
+                 style="max-width: 22.5%;">
+        </div>
+
+        <!-- Pincel Central Inferior -->
+        <div class="absolute" style="bottom: 5%; left: 50%; transform: translateX(-50%);">
+            <img src="https://static.wixstatic.com/media/c96204_95b5836a7daa435fb601cd5f404af05b~mv2.png"
+                 alt="Pincel Decorativo"
+                 class="hero-image w-84 h-84 object-contain">
+        </div>
+
+        <!-- Elementos Flutuantes -->
+        <div class="hero-element hero-element-1 absolute floating" style="top: -10%; left: 5%;">
+            <img src="https://static.wixstatic.com/media/c96204_27a5150a7cf94bf88d0f0435f3f33352~mv2.png" 
+                 alt="Elemento flutuante 1" 
+                 class="hero-image w-84 h-84 object-contain">
+        </div>
+        <div class="hero-element hero-element-2 absolute floating" style="top: 20%; right: -2%;">
+            <img src="https://static.wixstatic.com/media/c96204_50d21770d1ec4c7a864df13d693259cf~mv2.png" 
+                 alt="Elemento flutuante 2" 
+                 class="hero-image w-84 h-84 object-contain">
+        </div>
+        <div class="hero-element hero-element-3 absolute floating" style="bottom: -2%; left: 10%;">
+            <img src="https://static.wixstatic.com/media/c96204_aed3056bb0b744caaba7e3ac77a57354~mv2.png" 
+                 alt="Elemento flutuante 3" 
+                 class="hero-image w-64 h-64 object-contain">
+        </div>
+    </section>
+
+    <!-- Seção de Cursos -->
+    <section class="py-20 px-4 md:px-8 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center text-blue-900 mb-4">
+                Programação dos Cursos
+            </h2>
+            <p class="text-xl text-center text-gray-600 mb-12">
+                Descubra nossa seleção de workshops e cursos para despertar sua criatividade
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1: Pela mata afora -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
+                    <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
+                        <img src="https://static.wixstatic.com/media/c96204_0f97bc9f3ef542c08ccb74e53c0bfa72~mv2.png" alt="Imagem do Curso Pela mata afora" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            Pela mata afora
+                        </h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
+                                presencial
+                            </span>
+                            <span class="text-sm text-gray-500">21/04/2025</span>
+                        </div>
+                        <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-clock fa-fw"></i>
+                                <span>09:00 BRT</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-user fa-fw"></i>
+                                <span>Marcos Thadeu Soares de Melo</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-map-marker-alt fa-fw"></i>
+                                <span>Rio Branco - Horto Florestal</span>
+                            </div>
+                        </div>
+                        <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                            participar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2: Batalha do Palácio -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
+                    <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
+                        <img src="https://static.wixstatic.com/media/c96204_0f97bc9f3ef542c08ccb74e53c0bfa72~mv2.png" alt="Imagem do Curso Batalha do Palácio" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            Batalha do Palácio
+                        </h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
+                                presencial
+                            </span>
+                            <span class="text-sm text-gray-500">21/04/2025</span>
+                        </div>
+                        <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-clock fa-fw"></i>
+                                <span>09:00 BRT</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-user fa-fw"></i>
+                                <span>Possidonio Campelo Bessa Neto</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-map-marker-alt fa-fw"></i>
+                                <span>Rio Branco - UFAC</span>
+                            </div>
+                        </div>
+                        <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                            participar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3: Corpo Terreiro de Arte -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
+                    <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
+                        <img src="https://static.wixstatic.com/media/c96204_0f97bc9f3ef542c08ccb74e53c0bfa72~mv2.png" alt="Imagem do Curso Corpo Terreiro de Arte" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            Corpo Terreiro de Arte
+                        </h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
+                                presencial
+                            </span>
+                            <span class="text-sm text-gray-500">21/04/2025</span>
+                        </div>
+                        <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-clock fa-fw"></i>
+                                <span>09:00 BRT</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-user fa-fw"></i>
+                                <span>Joy Raiz</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-map-marker-alt fa-fw"></i>
+                                <span>Rio Branco - CEAF</span>
+                            </div>
+                        </div>
+                        <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                            participar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 4: Narrativas Visuais -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
+                    <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
+                        <img src="https://static.wixstatic.com/media/c96204_0f97bc9f3ef542c08ccb74e53c0bfa72~mv2.png" alt="Imagem do Curso Narrativas Visuais" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            Narrativas Visuais
+                        </h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">
+                                online
+                            </span>
+                            <span class="text-sm text-gray-500">02/07/2025</span>
+                        </div>
+                        <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-clock fa-fw"></i>
+                                <span>16:00 BRT</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-user fa-fw"></i>
+                                <span>Ana Carolina Silva</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-map-marker-alt fa-fw"></i>
+                                <span>Rio Branco - CEAF</span>
+                            </div>
+                        </div>
+                        <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                            participar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 5: Arte e Tecnologia -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
+                    <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
+                        <img src="https://static.wixstatic.com/media/c96204_0f97bc9f3ef542c08ccb74e53c0bfa72~mv2.png" alt="Imagem do Curso Arte e Tecnologia" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            Arte e Tecnologia
+                        </h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
+                                presencial
+                            </span>
+                            <span class="text-sm text-gray-500">03/07/2025</span>
+                        </div>
+                        <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-clock fa-fw"></i>
+                                <span>10:00 BRT</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-user fa-fw"></i>
+                                <span>Roberto Santos</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-map-marker-alt fa-fw"></i>
+                                <span>Rio Branco - CEAF</span>
+                            </div>
+                        </div>
+                        <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                            participar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 6: Criatividade Digital -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
+                    <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
+                        <img src="https://static.wixstatic.com/media/c96204_0f97bc9f3ef542c08ccb74e53c0bfa72~mv2.png" alt="Imagem do Curso Criatividade Digital" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            Criatividade Digital
+                        </h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">
+                                online
+                            </span>
+                            <span class="text-sm text-gray-500">03/07/2025</span>
+                        </div>
+                        <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-clock fa-fw"></i>
+                                <span>15:00 BRT</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-user fa-fw"></i>
+                                <span>Marina Costa</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-map-marker-alt fa-fw"></i>
+                                <span>Rio Branco - CEAF</span>
+                            </div>
+                        </div>
+                        <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                            participar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 px-8" style="background-color: #f2eadd;">
+        <div class="max-w-4xl mx-auto text-center">
+            <!-- Os logos foram removidos, mas o div abaixo é mantido para espaçamento se necessário -->
+            <div class="mb-8">
+                <!-- Conteúdo dos logos removido -->
+            </div>
+            
+            <p class="text-sm text-gray-700">
+                Semana Criativa 2025 &copy; Uma realização do SeringalLab/MPAC. Todos os direitos reservados.
+            </p>
+            <p class="text-xs text-gray-500 mt-2">
+                Design por SeringalLab
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal de Detalhes do Curso -->
+    <div id="courseModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="modalCourseTitle" class="text-2xl font-bold text-blue-900 mb-4">Título do Curso</h2>
+            <img id="modalCourseImage" src="" alt="Imagem do Curso" class="w-full h-48 object-cover rounded-md mb-4">
+            <p id="modalCourseType" class="text-sm mb-1"></p>
+            <p id="modalCourseDate" class="text-sm mb-1"></p>
+            <p id="modalCourseTime" class="text-sm mb-1"></p>
+            <p id="modalCourseMinister" class="text-sm mb-1"></p>
+            <p id="modalCourseLocation" class="text-sm mb-1"></p>
+            <p id="modalCourseDescription" class="text-gray-700 mt-4 mb-4">Descrição detalhada do curso aqui...</p>
+            <button class="w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                Inscreva-se
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Animação de entrada dos cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 200);
+                }
+            });
+        }, observerOptions);
+
+        // Observar todos os cards
+        document.querySelectorAll('.card-hover').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Lógica do Modal
+        const modal = document.getElementById('courseModal');
+        const modalTitle = document.getElementById('modalCourseTitle');
+        const modalImage = document.getElementById('modalCourseImage');
+        const modalType = document.getElementById('modalCourseType');
+        const modalDate = document.getElementById('modalCourseDate');
+        const modalTime = document.getElementById('modalCourseTime');
+        const modalMinister = document.getElementById('modalCourseMinister');
+        const modalLocation = document.getElementById('modalCourseLocation');
+        const modalDescription = document.getElementById('modalCourseDescription');
+        const closeButton = document.querySelector('.close-button');
+
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.addEventListener('click', () => {
+                // Extrair dados do card clicado
+                const title = card.querySelector('h3').innerText;
+                const imageSrc = card.querySelector('img').src;
+                const type = card.querySelector('.bg-purple-100, .bg-blue-100').innerText;
+                const date = card.querySelector('.text-gray-500').innerText;
+                
+                const details = card.querySelectorAll('.space-y-2 .flex.items-center.gap-2 span');
+                const time = details[0] ? details[0].innerText : 'Horário não informado';
+                const minister = details[1] ? details[1].innerText : 'Ministrante não informado';
+                const location = details[2] ? details[2].innerText : 'Local não informado';
+
+                // Preencher o modal
+                modalTitle.innerText = title;
+                modalImage.src = imageSrc;
+                modalImage.alt = "Imagem do curso " + title;
+                modalType.innerHTML = `<span class="px-2 py-1 rounded-full text-xs font-medium ${type === 'presencial' ? 'bg-purple-100 text-purple-700' : 'bg-blue-100 text-blue-700'}">${type}</span>`;
+                modalDate.innerHTML = `<i class="fas fa-calendar-alt fa-fw mr-2"></i>${date}`;
+                modalTime.innerHTML = `<i class="fas fa-clock fa-fw mr-2"></i>${time}`;
+                modalMinister.innerHTML = `<i class="fas fa-user fa-fw mr-2"></i>${minister}`;
+                modalLocation.innerHTML = `<i class="fas fa-map-marker-alt fa-fw mr-2"></i>${location}`;
+                // Você pode adicionar uma descrição mais detalhada se tiver esses dados
+                modalDescription.innerText = `Mais detalhes sobre o curso ${title} estarão disponíveis em breve. Este curso ${type} será realizado em ${date} às ${time}, ministrado por ${minister} em ${location}.`;
+
+                modal.style.display = 'flex'; // Alterado para flex para usar align-items e justify-content
+            });
+        });
+
+        closeButton.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
