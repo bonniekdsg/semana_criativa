@@ -120,6 +120,35 @@
             color: black;
             text-decoration: none;
         }
+
+        /* Estilos Responsivos */
+        @media (max-width: 768px) {
+            #hero {
+                height: auto; /* Altura automática para acomodar conteúdo */
+                padding-top: 8rem; /* Aumentar padding para menu + conteúdo */
+                padding-bottom: 2rem; 
+            }
+
+            .hero-main-images-container {
+                flex-direction: column; /* Empilhar imagens */
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .hero-main-images-container img {
+                max-width: 80%; /* Ajustar largura máxima para mobile */
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+            
+            /* Ocultar elementos gráficos no mobile */
+            .hero-element-1,
+            .hero-element-2,
+            .hero-element-3,
+            .hero-brush-container {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body class="bg-white relative">
@@ -127,7 +156,6 @@
     <nav class="fixed top-0 left-1/2 transform -translate-x-1/2 py-3 px-6 rounded-b-lg shadow-lg z-50" style="background-color: #1eae85;">
         <ul class="flex space-x-6">
             <li><a href="#" class="text-white hover:text-yellow-300 transition-colors">Home</a></li>
-            <li><a href="#" class="text-white hover:text-yellow-300 transition-colors">Sobre</a></li>
             <li><a href="#programacao" class="text-white hover:text-yellow-300 transition-colors">Programação</a></li>
             <li><a href="#" class="text-white hover:text-yellow-300 transition-colors">Contato</a></li>
         </ul>
@@ -135,7 +163,7 @@
 
     <!-- Hero Section -->
     <section id="hero" class="relative w-full overflow-hidden mx-auto pt-16" style="height: 600px; max-width: 1920px; background-color: #f2eadd;">
-        <div class="flex justify-center items-center h-full">
+        <div class="flex justify-center items-center h-full hero-main-images-container">
             <img src="https://static.wixstatic.com/media/c96204_cb9ce5b3da0f47d8a21d23fe5f30b31a~mv2.png" 
                  alt="Imagem Hero 1" 
                  class="hero-image h-auto object-contain m-2 hero-element-static hero-element-4" 
@@ -147,7 +175,7 @@
         </div>
 
         <!-- Pincel Central Inferior -->
-        <div class="absolute" style="bottom: 5%; left: 50%; transform: translateX(-50%);">
+        <div class="absolute hero-brush-container" style="bottom: 5%; left: 50%; transform: translateX(-50%);">
             <img src="https://static.wixstatic.com/media/c96204_95b5836a7daa435fb601cd5f404af05b~mv2.png"
                  alt="Pincel Decorativo"
                  class="hero-image w-84 h-84 object-contain">
@@ -391,6 +419,22 @@
                         </button>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Contato -->
+    <section id="contato" class="py-16 px-4 md:px-8 bg-white">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl font-bold text-blue-900 mb-6">
+                Tem alguma dúvida ou sugestão? <br class="md:hidden">Entre em contato conosco:
+            </h2>
+            <div class="text-lg text-gray-700">
+                <p class="mb-2">
+                    <i class="fas fa-envelope fa-fw mr-2 text-blue-900"></i>
+                    Email: <a href="mailto:seringallab@mpac.mp.br" class="text-blue-700 hover:text-yellow-500 transition-colors">seringallab@mpac.mp.br</a>
+                </p>
+                <!-- Você pode adicionar mais informações de contato aqui, como telefone ou redes sociais -->
             </div>
         </div>
     </section>
