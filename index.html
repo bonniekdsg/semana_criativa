@@ -96,6 +96,16 @@
             transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
+
+        /* Efeito hover para imagens dos cards */
+        .card-hover img {
+            filter: grayscale(30%) brightness(85%) saturate(70%);
+            transition: filter 0.3s ease;
+        }
+        
+        .card-hover:hover img {
+            filter: grayscale(0%) brightness(100%) saturate(100%);
+        }
         
         /* Estilos do Modal */
         .modal {
@@ -232,38 +242,56 @@
             <h2 class="text-4xl font-bold text-center text-blue-900 mb-4">
                 Programação
             </h2>
-            <p class="text-xl text-center text-gray-600 mb-12">
+            <p class="text-xl text-center text-gray-600 mb-8">
                 Descubra nossa seleção de atividades para despertar sua criatividade
             </p>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Card 1: Pela mata afora -->
+            <!-- Campo de Busca -->
+            <div class="max-w-2xl mx-auto mb-12">
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fas fa-search fa-fw text-gray-400"></i>
+                    </div>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="Buscar por atividade, instrutor, modalidade ou data..."
+                        class="block w-full pl-10 pr-4 py-4 text-base border border-gray-300 rounded-xl leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm transition-all duration-200"
+                    >
+                </div>
+                <div id="searchResults" class="mt-2 text-sm text-gray-600 text-center hidden">
+                    <span id="resultCount"></span>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="cardsContainer">
+                <!-- Card 1: Power BI Básico -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
                     <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
-                        <img src="https://static.wixstatic.com/media/c96204_0f97bc9f3ef542c08ccb74e53c0bfa72~mv2.png" alt="Imagem do Curso Pela mata afora" class="w-full h-full object-cover">
+                        <img src="https://static.wixstatic.com/media/c96204_d665e9cb29d24e8c9224f8393bf46397~mv2.png" alt="Imagem do Curso Pela mata afora" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-blue-900 mb-2">
-                            Pela mata afora
+                            Power BI Básico
                         </h3>
                         <div class="flex items-center gap-2 mb-3">
                             <span class="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
                                 presencial
                             </span>
-                            <span class="text-sm text-gray-500">21/04/2025</span>
+                            <span class="text-sm text-gray-500">30/06/2025 e 01/07/2025</span>
                         </div>
                         <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-clock fa-fw"></i>
-                                <span>09:00 BRT</span>
+                                <span>09h às 12h</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-user fa-fw"></i>
-                                <span>Marcos Thadeu Soares de Melo</span>
+                                <span>Tayla Maia e Willan Deromedes</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-map-marker-alt fa-fw"></i>
-                                <span>Rio Branco - Horto Florestal</span>
+                                <span>Rio Branco - Laboratório Ceaf </span>
                             </div>
                         </div>
                         <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
@@ -275,30 +303,31 @@
                 <!-- Card 2: Batalha do Palácio -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
                     <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
-                        <img src="https://static.wixstatic.com/media/c96204_0f97bc9f3ef542c08ccb74e53c0bfa72~mv2.png" alt="Imagem do Curso Batalha do Palácio" class="w-full h-full object-cover">
+                        <img src="https://static.wixstatic.com/media/c96204_4f0c0a26e7bf4952a533ed882866b93f~mv2.png" alt="Imagem do Curso Batalha do Palácio" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-blue-900 mb-2">
-                            Batalha do Palácio
+                            Bate-papo sobre <br>Blockchain e IA
                         </h3>
                         <div class="flex items-center gap-2 mb-3">
-                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
-                                presencial
+                            
+                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">
+                                online
                             </span>
-                            <span class="text-sm text-gray-500">21/04/2025</span>
+                            <span class="text-sm text-gray-500">30/06/2025</span>
                         </div>
                         <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-clock fa-fw"></i>
-                                <span>09:00 BRT</span>
+                                <span>10h às 11h</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-user fa-fw"></i>
-                                <span>Possidonio Campelo Bessa Neto</span>
+                                <span>Edelmar Ferreira e Antônio Anerão</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-map-marker-alt fa-fw"></i>
-                                <span>Rio Branco - UFAC</span>
+                                <span>online </span>
                             </div>
                         </div>
                         <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
@@ -310,30 +339,34 @@
                 <!-- Card 3: Corpo Terreiro de Arte -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
                     <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
-                        <img src="https://static.wixstatic.com/media/c96204_0f97bc9f3ef542c08ccb74e53c0bfa72~mv2.png" alt="Imagem do Curso Corpo Terreiro de Arte" class="w-full h-full object-cover">
+                        <img src="https://static.wixstatic.com/media/c96204_14a165d043bc48139245aa51bb16e556~mv2.png" alt="Imagem do Curso Corpo Terreiro de Arte" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-blue-900 mb-2">
-                            Corpo Terreiro de Arte
+                            Bate-papo sobre <br>engenharia de prompts 
                         </h3>
                         <div class="flex items-center gap-2 mb-3">
                             <span class="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
                                 presencial
                             </span>
-                            <span class="text-sm text-gray-500">21/04/2025</span>
+                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">
+                                online
+                            </span>
+                          
+                            <span class="text-sm text-gray-500">30/07/2025</span>
                         </div>
                         <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-clock fa-fw"></i>
-                                <span>09:00 BRT</span>
+                                <span>10h às 12h</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-user fa-fw"></i>
-                                <span>Joy Raiz</span>
+                                <span>Leonardo Fontes Vasconcelos  </span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-map-marker-alt fa-fw"></i>
-                                <span>Rio Branco - CEAF</span>
+                                <span><strong>Híbrido:</strong>Rio Branco - Sala multiusos Ceaf + online</span>
                             </div>
                         </div>
                         <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
@@ -345,30 +378,30 @@
                 <!-- Card 4: Narrativas Visuais -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
                     <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
-                        <img src="https://static.wixstatic.com/media/c96204_0f97bc9f3ef542c08ccb74e53c0bfa72~mv2.png" alt="Imagem do Curso Narrativas Visuais" class="w-full h-full object-cover">
+                        <img src="https://static.wixstatic.com/media/c96204_44d7742818ea45d08018f2e38e615f6a~mv2.png" alt="Imagem do Curso Narrativas Visuais" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-blue-900 mb-2">
-                            Narrativas Visuais
+                            Gestão do Tempo  
                         </h3>
                         <div class="flex items-center gap-2 mb-3">
-                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">
-                                online
+                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
+                                presencial
                             </span>
-                            <span class="text-sm text-gray-500">02/07/2025</span>
+                            <span class="text-sm text-gray-500">01/07/2025</span>
                         </div>
                         <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-clock fa-fw"></i>
-                                <span>16:00 BRT</span>
+                                <span>9h às 12h</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-user fa-fw"></i>
-                                <span>Ana Carolina Silva</span>
+                                <span>Marina Jardim  </span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-map-marker-alt fa-fw"></i>
-                                <span>Rio Branco - CEAF</span>
+                                <span>Rio Branco - Sala multiusos Ceaf </span>
                             </div>
                         </div>
                         <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
@@ -380,30 +413,30 @@
                 <!-- Card 5: Arte e Tecnologia -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
                     <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
-                        <img src="https://static.wixstatic.com/media/c96204_0f97bc9f3ef542c08ccb74e53c0bfa72~mv2.png" alt="Imagem do Curso Arte e Tecnologia" class="w-full h-full object-cover">
+                        <img src="https://static.wixstatic.com/media/c96204_d2e1f4c6211c479cbf67ee50cd9c15fe~mv2.png" alt="Imagem do Curso Arte e Tecnologia" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-blue-900 mb-2">
-                            Arte e Tecnologia
+                            A hora da ideia  
                         </h3>
                         <div class="flex items-center gap-2 mb-3">
                             <span class="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
                                 presencial
                             </span>
-                            <span class="text-sm text-gray-500">03/07/2025</span>
+                            <span class="text-sm text-gray-500">01/07/2025</span>
                         </div>
                         <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-clock fa-fw"></i>
-                                <span>10:00 BRT</span>
+                                <span>8h às 8h30 </span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-user fa-fw"></i>
-                                <span>Roberto Santos</span>
+                                <span>Lara de Oliveira Marques  </span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-map-marker-alt fa-fw"></i>
-                                <span>Rio Branco - CEAF</span>
+                                <span>Rio Branco - Entrada do Prédio Sede </span>
                             </div>
                         </div>
                         <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
@@ -415,30 +448,385 @@
                 <!-- Card 6: Criatividade Digital -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
                     <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
-                        <img src="https://static.wixstatic.com/media/c96204_0f97bc9f3ef542c08ccb74e53c0bfa72~mv2.png" alt="Imagem do Curso Criatividade Digital" class="w-full h-full object-cover">
+                        <img src="https://static.wixstatic.com/media/c96204_d17ea895d70040859a2e0c5cc2e225c5~mv2.png" alt="Imagem do Curso Criatividade Digital" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-blue-900 mb-2">
-                            Criatividade Digital
+                            Vozes do MPAC Apresentação musical alunos do Coral  
                         </h3>
                         <div class="flex items-center gap-2 mb-3">
-                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">
-                                online
+                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
+                                presencial
+                            </span>
+                            <span class="text-sm text-gray-500">01/07/2025</span>
+                        </div>
+                        <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-clock fa-fw"></i>
+                                <span>12h às 12h30 </span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-user fa-fw"></i>
+                                <span>Jean Luiz Oliveira da Silva  </span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-map-marker-alt fa-fw"></i>
+                                <span>Rio Branco - Restaurante   </span>
+                            </div>
+                        </div>
+                        <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                            participar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 7: Workshop de Design Thinking -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
+                    <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
+                        <img src="https://static.wixstatic.com/media/c96204_246158977da24153928cc0853d787935~mv2.png" alt="Imagem do Workshop Design Thinking" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            Oficina: Organização financeira se aprende na prática  
+                        </h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
+                                presencial
+                            </span>
+                            <span class="text-sm text-gray-500">01/07/2025</span>
+                        </div>
+                        <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-clock fa-fw"></i>
+                                <span>13h às 14h30</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-user fa-fw"></i>
+                                <span>Karoli Haluen  Sauer Silveira   </span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-map-marker-alt fa-fw"></i>
+                                <span>Rio Branco - Sala multiusos Ceaf </span>
+                            </div>
+                        </div>
+                        <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                            participar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 8: Podcast: Criatividade no Trabalho -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
+                    <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
+                        <img src="https://static.wixstatic.com/media/c96204_d2e1f4c6211c479cbf67ee50cd9c15fe~mv2.png" alt="Imagem do Podcast" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            Oficina: Privacidade Criativa 
+                        </h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
+                                presencial
+                            </span>
+                            <span class="text-sm text-gray-500">02/07/2025</span>
+                        </div>
+                        <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-clock fa-fw"></i>
+                                <span>9h às 10h</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-user fa-fw"></i>
+                                <span>Madson Júnior Alves da Rocha  </span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-map-marker-alt fa-fw"></i>
+                                <span>Rio Branco - Sala multiusos Ceaf  </span>
+                            </div>
+                        </div>
+                        <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                            participar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 9: Oficina de Fotografia Criativa -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
+                    <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
+                        <img src="https://static.wixstatic.com/media/c96204_d746688a6bf24578853e111da71ebfc6~mv2.png" alt="Imagem da Oficina de Fotografia" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            Oficina Escrita Criativa 
+                        </h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
+                                presencial
+                            </span>
+                         
+                            </span>
+                            <span class="text-sm text-gray-500">02/07/2025</span>
+                        </div>
+                        <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-clock fa-fw"></i>
+                                <span>13h às 15h</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-user fa-fw"></i>
+                                <span>Rayssa Castelo Branco da Silva   </span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-map-marker-alt fa-fw"></i>
+                                <span>Rio Branco - Sala multiusos Ceaf  </span>
+                            </div>
+                        </div>
+                        <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                            participar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 10: Mesa Redonda: Inovação no Setor Público -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
+                    <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
+                        <img src="https://static.wixstatic.com/media/c96204_d17ea895d70040859a2e0c5cc2e225c5~mv2.png" alt="Imagem da Mesa Redonda" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            Vozes do MPAC Apresentação musical alunos do Coral  
+                        </h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
+                                presencial
+                            </span>
+                           
+                            <span class="text-sm text-gray-500">02/07/2025</span>
+                        </div>
+                        <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-clock fa-fw"></i>
+                                <span>12h às 12h30</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-user fa-fw"></i>
+                                <span>Jean Luiz Oliveira da Silva  </span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-map-marker-alt fa-fw"></i>
+                                <span> Rio Branco - Restaurante  </span>
+                            </div>
+                        </div>
+                        <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                            participar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 11: Mindfulness e Criatividade -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
+                    <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
+                        <img src="https://static.wixstatic.com/media/c96204_866fe30d69d14275a5f95d96fc3959a4~mv2.png" alt="Imagem do Mindfulness" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            Trajeto da Gratidão - de salto em salto, espalhando gentileza e construindo um ambiente melhor  
+                        </h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
+                                presencial
                             </span>
                             <span class="text-sm text-gray-500">03/07/2025</span>
                         </div>
                         <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-clock fa-fw"></i>
-                                <span>15:00 BRT</span>
+                                <span>8h às 8h30</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-user fa-fw"></i>
-                                <span>Marina Costa</span>
+                                <span>Kartiele da Silva Lira </span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-map-marker-alt fa-fw"></i>
-                                <span>Rio Branco - CEAF</span>
+                                <span>Rio Branco - Entrada Prédio Especializadas </span>
+                            </div>
+                        </div>
+                        <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                            participar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 12: Encerramento: Mostra de Projetos -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
+                    <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
+                        <img src="https://static.wixstatic.com/media/c96204_d2e1f4c6211c479cbf67ee50cd9c15fe~mv2.png" alt="Imagem da Mostra de Projetos" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            A hora da ideia  
+                        </h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
+                                presencial
+                            </span>
+                            <span class="text-sm text-gray-500">03/07/2025</span>
+                        </div>
+                        <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-clock fa-fw"></i>
+                                <span>8h às 8h30</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-user fa-fw"></i>
+                                <span>Lara de Oliveira Marques  </span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-map-marker-alt fa-fw"></i>
+                                <span>Rio Branco - Entrada do Prédio Especializadas </span>
+                            </div>
+                        </div>
+                        <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                            participar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 13: Workshop de Marketing Digital Criativo -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
+                    <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
+                        <img src="https://static.wixstatic.com/media/c96204_d17ea895d70040859a2e0c5cc2e225c5~mv2.png" alt="Imagem do Workshop Marketing Digital" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            Vozes do MPAC Apresentação do Coral do MPAC no restaurante 
+                        </h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
+                                presencial
+                            </span>
+                            
+                            <span class="text-sm text-gray-500">03/07/2025</span>
+                        </div>
+                        <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-clock fa-fw"></i>
+                                <span>12h às 12h30</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-user fa-fw"></i>
+                                <span>Jean Luiz Oliveira da Silva </span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-map-marker-alt fa-fw"></i>
+                                <span>Rio Branco - Restaurante </span>
+                            </div>
+                        </div>
+                        <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                            participar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 14: Mesa Redonda: Inovação e Sustentabilidade -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
+                    <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
+                        <img src="https://static.wixstatic.com/media/c96204_20ecf5ad55524b93aba515906ef1ed1a~mv2.png" alt="Imagem da Mesa Redonda Sustentabilidade" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            Oficina de fotografia com celular 
+                        </h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
+                                presencial
+                            </span>
+                            <span class="text-sm text-gray-500">03/07/2025</span>
+                        </div>
+                        <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-clock fa-fw"></i>
+                                <span>9h às 12h</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-user fa-fw"></i>
+                                <span>Leonardo Fontes Vasconcelos </span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-map-marker-alt fa-fw"></i>
+                                <span>Rio Branco - Sala multiusos Ceaf</span>
+                            </div>
+                        </div>
+                        <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                            participar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 15: Oficina de Teatro e Expressão -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
+                    <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
+                        <img src="https://static.wixstatic.com/media/c96204_8951ca6cddca4dd1a2c01957e832ad6b~mv2.png" alt="Imagem da Oficina de Teatro" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            Aulão de dança de salão 
+                        </h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
+                                presencial
+                            </span>
+                            <span class="text-sm text-gray-500">03/07/2025</span>
+                        </div>
+                        <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-clock fa-fw"></i>
+                                <span>14h30 às 15h30</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-user fa-fw"></i>
+                                <span>Jakeline Bezerra </span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-map-marker-alt fa-fw"></i>
+                                <span>Rio Branco - Sala multiusos Ceaf </span>
+                            </div>
+                        </div>
+                        <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                            participar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 16: Encerramento: Mostra Cultural e Premiação -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
+                    <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
+                        <img src="https://static.wixstatic.com/media/c96204_c5e81c65cb644896a6b3f59a8d0f55d3~mv2.png" alt="Imagem do Encerramento" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            Aulão de funcional 
+                        </h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
+                                presencial
+                            </span>
+                          
+                            <span class="text-sm text-gray-500">03/07/2025</span>
+                        </div>
+                        <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-clock fa-fw"></i>
+                                <span>15h30 às 16h30</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-user fa-fw"></i>
+                                <span>Adailton José Silva de Moraes </span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-map-marker-alt fa-fw"></i>
+                                <span>Rio Branco - Estacionamento prédio sede </span>
                             </div>
                         </div>
                         <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
@@ -502,6 +890,69 @@
     </div>
 
     <script>
+        // Funcionalidade de Busca
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        const resultCount = document.getElementById('resultCount');
+        const cardsContainer = document.getElementById('cardsContainer');
+        
+        function searchActivities() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.card-hover');
+            let visibleCount = 0;
+            
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const instructor = card.querySelector('.fas.fa-user').nextElementSibling?.textContent.toLowerCase() || '';
+                const location = card.querySelector('.fas.fa-map-marker-alt').nextElementSibling?.textContent.toLowerCase() || '';
+                const date = card.querySelector('.text-gray-500').textContent.toLowerCase();
+                const modalityElements = card.querySelectorAll('.px-3.py-1.rounded-full');
+                let modalities = '';
+                modalityElements.forEach(el => {
+                    if (el.classList.contains('bg-purple-100') || el.classList.contains('bg-blue-100')) {
+                        modalities += el.textContent.toLowerCase() + ' ';
+                    }
+                });
+                
+                const searchableText = `${title} ${instructor} ${location} ${date} ${modalities}`;
+                
+                if (searchTerm === '' || searchableText.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Mostrar resultado da busca
+            if (searchTerm === '') {
+                searchResults.classList.add('hidden');
+            } else {
+                searchResults.classList.remove('hidden');
+                if (visibleCount === 0) {
+                    resultCount.textContent = 'Nenhuma atividade encontrada. Tente outros termos de busca.';
+                    resultCount.classList.add('text-red-500');
+                    resultCount.classList.remove('text-gray-600');
+                } else {
+                    resultCount.textContent = `${visibleCount} atividade${visibleCount !== 1 ? 's' : ''} encontrada${visibleCount !== 1 ? 's' : ''}`;
+                    resultCount.classList.remove('text-red-500');
+                    resultCount.classList.add('text-gray-600');
+                }
+            }
+        }
+        
+        // Event listener para busca em tempo real
+        searchInput.addEventListener('input', searchActivities);
+        
+        // Limpar busca ao pressionar Escape
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                searchInput.value = '';
+                searchActivities();
+                searchInput.blur();
+            }
+        });
+
         // Animação de entrada dos cards
         const observerOptions = {
             threshold: 0.1,
