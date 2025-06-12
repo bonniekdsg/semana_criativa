@@ -127,14 +127,114 @@
         .modal-content {
             background-color: #fefefe;
             margin: auto;
-            padding: 20px;
+            padding: 0;
             border: 1px solid #888;
             width: 80%;
             max-width: 600px;
+            max-height: 90vh;
             border-radius: 8px;
             position: relative;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             animation: fadeInModal 0.3s ease-out;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Container superior do modal (elementos fixos) */
+        .modal-header {
+            flex-shrink: 0;
+            padding: 20px 20px 0 20px;
+        }
+
+        /* Container da descrição com scroll */
+        .modal-description-container {
+            flex: 1;
+            padding: 0 20px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Estilo específico para a descrição do modal */
+        #modalCourseDescription {
+            max-height: 150px;
+            overflow-y: auto;
+            padding-right: 8px;
+            padding-bottom: 4px;
+            line-height: 1.6;
+            text-align: justify;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        /* Container inferior do modal (botão fixo) */
+        .modal-footer {
+            flex-shrink: 0;
+            padding: 0 20px 20px 20px;
+        }
+
+        /* Estilo personalizado para a barra de rolagem */
+        #modalCourseDescription::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #modalCourseDescription::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+
+        #modalCourseDescription::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 3px;
+        }
+
+        #modalCourseDescription::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+
+        /* Garantir que o conteúdo seja totalmente scrollável */
+        #modalCourseDescription {
+            scrollbar-gutter: stable;
+        }
+
+        /* Para navegadores Firefox */
+        #modalCourseDescription {
+            scrollbar-width: thin;
+            scrollbar-color: #c1c1c1 #f1f1f1;
+        }
+
+        /* Responsividade para dispositivos móveis */
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                margin: 20px auto;
+                max-height: 85vh;
+            }
+            
+            .modal-header {
+                padding: 15px 15px 0 15px;
+            }
+            
+            .modal-description-container {
+                padding: 0 15px;
+            }
+            
+            .modal-footer {
+                padding: 0 15px 15px 15px;
+            }
+            
+            #modalCourseDescription {
+                max-height: 120px;
+                padding-bottom: 4px;
+            }
+            
+            .close-button {
+                top: 10px;
+                right: 20px;
+                font-size: 24px;
+            }
         }
 
         @keyframes fadeInModal {
@@ -145,11 +245,12 @@
         .close-button {
             color: #aaa;
             position: absolute;
-            top: 10px;
-            right: 20px;
+            top: 15px;
+            right: 25px;
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
+            z-index: 1001;
         }
 
         .close-button:hover,
@@ -736,7 +837,7 @@
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-blue-900 mb-2">
-                            Oficina de fotografia com celular 
+                            Oficina de fotografia <br> com celular 
                         </h3>
                         <div class="flex items-center gap-2 mb-3">
                             <span class="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
@@ -875,17 +976,29 @@
     <div id="courseModal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
-            <h2 id="modalCourseTitle" class="text-2xl font-bold text-blue-900 mb-4">Título do Curso</h2>
-            <img id="modalCourseImage" src="" alt="Imagem do Curso" class="w-full h-48 object-cover rounded-md mb-4">
-            <p id="modalCourseType" class="text-sm mb-1"></p>
-            <p id="modalCourseDate" class="text-sm mb-1"></p>
-            <p id="modalCourseTime" class="text-sm mb-1"></p>
-            <p id="modalCourseMinister" class="text-sm mb-1"></p>
-            <p id="modalCourseLocation" class="text-sm mb-1"></p>
-            <p id="modalCourseDescription" class="text-gray-700 mt-4 mb-4">Descrição detalhada do curso aqui...</p>
-            <button class="w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
-                Inscreva-se
-            </button>
+            
+            <!-- Cabeçalho do Modal (Elementos Fixos) -->
+            <div class="modal-header">
+                <h2 id="modalCourseTitle" class="text-2xl font-bold text-blue-900 mb-4">Título do Curso</h2>
+                <img id="modalCourseImage" src="" alt="Imagem do Curso" class="w-full h-48 object-cover rounded-md mb-4">
+                <p id="modalCourseType" class="text-sm mb-1"></p>
+                <p id="modalCourseDate" class="text-sm mb-1"></p>
+                <p id="modalCourseTime" class="text-sm mb-1"></p>
+                <p id="modalCourseMinister" class="text-sm mb-1"></p>
+                <p id="modalCourseLocation" class="text-sm mb-4"></p>
+            </div>
+            
+            <!-- Container da Descrição com Scroll -->
+            <div class="modal-description-container">
+                <p id="modalCourseDescription" class="text-gray-700">Descrição detalhada do curso aqui...</p>
+            </div>
+            
+            <!-- Rodapé do Modal (Botão Fixo) -->
+            <div class="modal-footer">
+                <button class="w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                    Inscreva-se
+                </button>
+            </div>
         </div>
     </div>
 
@@ -978,6 +1091,41 @@
             observer.observe(card);
         });
 
+        // Função para diferenciar botões dos cards entre cursos e momentos especiais
+        function setupCardButtons() {
+            const specialMoments = [
+                'a hora da ideia',
+                'vozes do mpac apresentação musical alunos do coral',
+                'vozes do mpac apresentação do coral do mpac no restaurante',
+                'trajeto da gratidão - de salto em salto, espalhando gentileza e construindo um ambiente melhor'
+            ];
+
+            document.querySelectorAll('.card-hover').forEach(card => {
+                const title = card.querySelector('h3').innerText.toLowerCase().trim().replace(/\s+/g, ' ');
+                const button = card.querySelector('button');
+                
+                if (specialMoments.includes(title)) {
+                    // Para momentos especiais
+                    button.innerHTML = '<i class="fas fa-heart mr-2"></i>Momento Especial';
+                    button.className = 'mt-auto w-full bg-gradient-to-r from-orange-400 to-emerald-500 hover:from-orange-500 hover:to-emerald-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200';
+                    button.style.background = 'linear-gradient(to right, #feb70e, #21ae82)';
+                    button.addEventListener('mouseenter', () => {
+                        button.style.background = 'linear-gradient(to right, #f59e0b, #059669)';
+                    });
+                    button.addEventListener('mouseleave', () => {
+                        button.style.background = 'linear-gradient(to right, #feb70e, #21ae82)';
+                    });
+                } else {
+                    // Para cursos com inscrição (manter como está)
+                    button.innerHTML = 'participar';
+                    button.className = 'mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200';
+                }
+            });
+        }
+
+        // Executar a configuração dos botões após o carregamento
+        setupCardButtons();
+
         // Lógica do Modal
         const modal = document.getElementById('courseModal');
         const modalTitle = document.getElementById('modalCourseTitle');
@@ -1012,8 +1160,73 @@
                 modalTime.innerHTML = `<i class="fas fa-clock fa-fw mr-2"></i>${time}`;
                 modalMinister.innerHTML = `<i class="fas fa-user fa-fw mr-2"></i>${minister}`;
                 modalLocation.innerHTML = `<i class="fas fa-map-marker-alt fa-fw mr-2"></i>${location}`;
-                // Você pode adicionar uma descrição mais detalhada se tiver esses dados
-                modalDescription.innerText = `Mais detalhes sobre o curso ${title} estarão disponíveis em breve. Este curso ${type} será realizado em ${date} às ${time}, ministrado por ${minister} em ${location}.`;
+                
+                // Descrições específicas para cada atividade
+                const descriptions = {
+                    'power bi básico': 'Este curso introdutório é voltado para quem deseja dar os primeiros passos na análise e visualização de dados com o Power BI. De forma prática e acessível, os participantes aprenderão a importar dados, criar relatórios interativos e desenvolver dashboards dinâmicos, explorando os principais recursos da ferramenta. Ideal para quem busca transformar informações em insights com rapidez e clareza.',
+                    
+                    'bate-papo sobre blockchain e ia': 'Neste encontro descontraído e provocativo, vamos explorar as conexões entre duas das tecnologias mais transformadoras da atualidade: Blockchain e Inteligência Artificial. A conversa abordará conceitos fundamentais, aplicações práticas no setor público e os impactos dessas inovações na vida das pessoas. Um convite para refletir sobre o futuro da confiança digital, da automação inteligente e das novas possibilidades que emergem na interseção entre dados, segurança e decisão.',
+                    
+                    'bate-papo sobre engenharia de prompts': 'Você já se perguntou como conversar melhor com inteligências artificiais? Este bate-papo vai desvendar o universo da engenharia de prompts — a arte de formular perguntas e comandos que orientam modelos de IA, como o ChatGPT, a gerarem respostas mais úteis, criativas e precisas. Com exemplos práticos e linguagem acessível, vamos explorar como escrever prompts eficazes, evitar armadilhas comuns e aproveitar ao máximo o potencial das ferramentas baseadas em IA generativa.',
+                    
+                    'gestão do tempo': 'Vivemos cercados de demandas, prazos e distrações. Como organizar o dia a dia com mais clareza, equilíbrio e propósito? Nesta oficina, vamos refletir sobre a relação com o tempo e explorar ferramentas práticas para planejar rotinas, definir prioridades e lidar com a sobrecarga. A proposta é simples: menos correria, mais foco e bem-estar. Ideal para quem busca mais autonomia na gestão do próprio tempo — no trabalho e na vida.',
+                    
+                    'a hora da ideia': 'Atividade rápida e leve, pensada para estimular a criatividade logo no início do dia e trazer um clima mais descontraído e inspirador para o ambiente de trabalho.',
+                    
+                    'vozes do mpac apresentação musical alunos do coral': 'Emoção, harmonia e vozes que se encontram além do ofício. O Coral do Ministério Público do Estado do Acre convida você para uma apresentação especial que celebra a arte como forma de conexão e expressão coletiva. Um momento de pausa, encantamento e celebração dos talentos que dão voz à nossa instituição.',
+                    
+                    'oficina: organização financeira se aprende na prática': 'Mais do que números, a relação com o dinheiro passa por escolhas, hábitos e prioridades. Nesta oficina, vamos explorar — de forma prática e acessível — como organizar as finanças pessoais, planejar gastos, lidar com imprevistos e definir metas realistas. Com foco no autoconhecimento financeiro e no consumo consciente, a atividade propõe reflexões e ferramentas simples para quem quer transformar a Mais do que números, a relação com o dinheiro passa por escolhas, hábitos e prioridades. Nesta oficina, vamos explorar — de forma prática e acessível — como organizar as finanças pessoais, planejar gastos, lidar com imprevistos e definir metas realistas. Com foco no autoconhecimento financeiro e no consumo consciente, a atividade propõe reflexões e ferramentas simples para quem quer transformar a rotina financeira e tomar decisões com mais clareza e equilíbrio.',
+                    
+                    'oficina: privacidade criativa': 'Promover o entendimento dos fundamentos da proteção de dados de forma lúdica e acessível, incentivando um olhar mais consciente e criativo sobre a exposição de informações pessoais em ambientes físicos e digitais.',
+                    
+                    'oficina escrita criativa': 'Um mergulho leve e instigante no universo da imaginação e das palavras. A oficina propõe dinâmicas práticas de escrita individual e coletiva, explorando técnicas narrativas, construção de personagens, enredos e descrições sensoriais. A partir de estímulos criativos, como imagens e frases literárias, os participantes serão convidados a experimentar a escrita Um mergulho leve e instigante no universo da imaginação e das palavras. A oficina propõe dinâmicas práticas de escrita individual e coletiva, explorando técnicas narrativas, construção de personagens, enredos e descrições sensoriais. A partir de estímulos criativos, como imagens e frases literárias, os participantes serão convidados a experimentar a escrita como forma de expressão, descoberta e diversão — mesmo que nunca tenham escrito antes.',
+                    
+                    'trajeto da gratidão - de salto em salto, espalhando gentileza e construindo um ambiente melhor': 'Um convite leve e interativo para valorizar os pequenos gestos que fazem a diferença. Ao longo de um trajeto simbólico, de salto em salto, participantes serão incentivados a praticar e espalhar palavras de gratidão, reconhecimento e gentileza. Uma experiência simples, mas poderosa, para fortalecer vínculos, inspirar empatia e tornar o ambiente institucional mais acolhedor e humano.',
+                    
+                    'oficina de fotografia com celular': 'Nesta oficina prática e acessível, os participantes aprenderão a explorar todo o potencial da câmera do celular para registrar imagens com mais técnica e criatividade. Serão abordados fundamentos da fotografia, dicas de composição, uso da luz, configurações essenciais, além de orientações para fotografar pessoas, ambientes e objetos. A atividade também inclui truques de edição rápida usando aplicativos gratuitos — tudo pensado para quem quer melhorar suas fotos no dia a dia, mesmo sem equipamento profissional.',
+                    
+                    'aulão de dança de salão': 'Neste aulão animado e inclusivo, vamos explorar passos básicos de ritmos como forró e brega, promovendo integração, alegria e movimento. Não é preciso experiência nem par fixo — basta trazer disposição para se divertir, aprender e se conectar com o outro através da dança.',
+                    
+                    'aulão de funcional': 'Movimente-se, respire e recarregue as energias! O aulão de treino funcional é um convite para ativar o corpo com exercícios dinâmicos, acessíveis e cheios de ritmo. Com foco em força, resistência, equilíbrio e diversão, a atividade é pensada para todos os níveis — basta aparecer com roupa confortável e disposição.  '
+                };
+                
+                // Buscar descrição baseada no título (normalizando quebras de linha e espaços)
+                const titleKey = title.toLowerCase().trim().replace(/\s+/g, ' ');
+                let description = descriptions[titleKey];
+                
+                // Se não encontrar descrição específica, usar genérica
+                if (!description) {
+                    description = `Participe desta atividade da Semana Criativa 2025! Será realizada em ${date} às ${time}, com ${minister} em ${location}.`;
+                }
+                
+                modalDescription.innerText = description;
+
+                // Verificar se é um momento especial (sem inscrição)
+                const specialMoments = [
+                    'a hora da ideia',
+                    'vozes do mpac apresentação musical alunos do coral',
+                    'vozes do mpac apresentação do coral do mpac no restaurante',
+                    'trajeto da gratidão - de salto em salto, espalhando gentileza e construindo um ambiente melhor'
+                ];
+                
+                const modalButton = document.querySelector('.modal-footer button');
+                
+                if (specialMoments.includes(titleKey)) {
+                    // Para momentos especiais, mostrar convite
+                    modalButton.innerHTML = '<i class="fas fa-heart mr-2"></i>Venha participar deste momento especial!';
+                    modalButton.className = 'w-full bg-gradient-to-r from-orange-400 to-emerald-500 hover:from-orange-500 hover:to-emerald-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 cursor-default';
+                    modalButton.style.background = 'linear-gradient(to right, #feb70e, #21ae82)';
+                    modalButton.addEventListener('mouseenter', () => {
+                        modalButton.style.background = 'linear-gradient(to right, #f59e0b, #059669)';
+                    });
+                    modalButton.addEventListener('mouseleave', () => {
+                        modalButton.style.background = 'linear-gradient(to right, #feb70e, #21ae82)';
+                    });
+                } else {
+                    // Para cursos com inscrição, mostrar botão normal
+                    modalButton.innerHTML = 'Inscreva-se';
+                    modalButton.className = 'w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200';
+                }
 
                 modal.style.display = 'flex'; // Alterado para flex para usar align-items e justify-content
             });
