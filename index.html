@@ -1116,9 +1116,20 @@
                         button.style.background = 'linear-gradient(to right, #feb70e, #21ae82)';
                     });
                 } else {
-                    // Para cursos com inscrição (manter como está)
+                    // Para cursos com inscrição, mostrar botão normal
                     button.innerHTML = 'participar';
                     button.className = 'mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200';
+                    
+                    // Remover event listeners antigos se existirem
+                    if (button.mouseEnterHandler) {
+                        button.removeEventListener('mouseenter', button.mouseEnterHandler);
+                        button.removeEventListener('mouseleave', button.mouseLeaveHandler);
+                    }
+                    button.style.background = '';
+                    
+                    // Limpar qualquer onclick anterior - botões do card só abrem modal
+                    button.onclick = null;
+                    button.style.cursor = 'default';
                 }
             });
         }
@@ -1175,11 +1186,11 @@
                     
                     'vozes do mpac apresentação musical alunos do coral': 'Emoção, harmonia e vozes que se encontram além do ofício. O Coral do Ministério Público do Estado do Acre convida você para uma apresentação especial que celebra a arte como forma de conexão e expressão coletiva. Um momento de pausa, encantamento e celebração dos talentos que dão voz à nossa instituição.',
                     
-                    'oficina: organização financeira se aprende na prática': 'Mais do que números, a relação com o dinheiro passa por escolhas, hábitos e prioridades. Nesta oficina, vamos explorar — de forma prática e acessível — como organizar as finanças pessoais, planejar gastos, lidar com imprevistos e definir metas realistas. Com foco no autoconhecimento financeiro e no consumo consciente, a atividade propõe reflexões e ferramentas simples para quem quer transformar a Mais do que números, a relação com o dinheiro passa por escolhas, hábitos e prioridades. Nesta oficina, vamos explorar — de forma prática e acessível — como organizar as finanças pessoais, planejar gastos, lidar com imprevistos e definir metas realistas. Com foco no autoconhecimento financeiro e no consumo consciente, a atividade propõe reflexões e ferramentas simples para quem quer transformar a rotina financeira e tomar decisões com mais clareza e equilíbrio.',
+                    'oficina: organização financeira se aprende na prática': 'Mais do que números, a relação com o dinheiro passa por escolhas, hábitos e prioridades. Nesta oficina, vamos explorar — de forma prática e acessível — como organizar as finanças pessoais, planejar gastos, lidar com imprevistos e definir metas realistas. Com foco no autoconhecimento financeiro e no consumo consciente, a atividade propõe reflexões e ferramentas simples para quem quer transformar a rotina financeira e tomar decisões com mais clareza e equilíbrio.',
                     
                     'oficina: privacidade criativa': 'Promover o entendimento dos fundamentos da proteção de dados de forma lúdica e acessível, incentivando um olhar mais consciente e criativo sobre a exposição de informações pessoais em ambientes físicos e digitais.',
                     
-                    'oficina escrita criativa': 'Um mergulho leve e instigante no universo da imaginação e das palavras. A oficina propõe dinâmicas práticas de escrita individual e coletiva, explorando técnicas narrativas, construção de personagens, enredos e descrições sensoriais. A partir de estímulos criativos, como imagens e frases literárias, os participantes serão convidados a experimentar a escrita Um mergulho leve e instigante no universo da imaginação e das palavras. A oficina propõe dinâmicas práticas de escrita individual e coletiva, explorando técnicas narrativas, construção de personagens, enredos e descrições sensoriais. A partir de estímulos criativos, como imagens e frases literárias, os participantes serão convidados a experimentar a escrita como forma de expressão, descoberta e diversão — mesmo que nunca tenham escrito antes.',
+                    'oficina escrita criativa': 'Um mergulho leve e instigante no universo da imaginação e das palavras. A oficina propõe dinâmicas práticas de escrita individual e coletiva, explorando técnicas narrativas, construção de personagens, enredos e descrições sensoriais. A partir de estímulos criativos, como imagens e frases literárias, os participantes serão convidados a experimentar a escrita como forma de expressão, descoberta e diversão — mesmo que nunca tenham escrito antes.',
                     
                     'trajeto da gratidão - de salto em salto, espalhando gentileza e construindo um ambiente melhor': 'Um convite leve e interativo para valorizar os pequenos gestos que fazem a diferença. Ao longo de um trajeto simbólico, de salto em salto, participantes serão incentivados a praticar e espalhar palavras de gratidão, reconhecimento e gentileza. Uma experiência simples, mas poderosa, para fortalecer vínculos, inspirar empatia e tornar o ambiente institucional mais acolhedor e humano.',
                     
@@ -1226,6 +1237,38 @@
                     // Para cursos com inscrição, mostrar botão normal
                     modalButton.innerHTML = 'Inscreva-se';
                     modalButton.className = 'w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200';
+                    
+                    // Remover event listeners antigos
+                    modalButton.removeEventListener('mouseenter', modalButton.mouseEnterHandler);
+                    modalButton.removeEventListener('mouseleave', modalButton.mouseLeaveHandler);
+                    modalButton.style.background = '';
+                    
+                    // Adicionar funcionalidade de redirecionamento para todos os cursos
+                    modalButton.onclick = null; // Limpar onclick anterior
+                    
+                    // Links de inscrição para cada curso (usar o mesmo link como exemplo)
+                    const inscriptionLinks = {
+                        'power bi básico': 'https://eventos.mpac.mp.br/enrol/index.php?id=403',
+                        'bate-papo sobre blockchain e ia': 'https://eventos.mpac.mp.br/enrol/index.php?id=404', // SUBSTITUA pelo link correto
+                        'bate-papo sobre engenharia de prompts': 'https://eventos.mpac.mp.br/enrol/index.php?id=407', // SUBSTITUA pelo link correto
+                        'gestão do tempo': 'https://eventos.mpac.mp.br/enrol/index.php?id=405', 
+                        'oficina: organização financeira se aprende na prática': 'https://eventos.mpac.mp.br/enrol/index.php?id=409', 
+                        'oficina: privacidade criativa': 'https://eventos.mpac.mp.br/enrol/index.php?id=408', 
+                        'oficina escrita criativa': 'https://eventos.mpac.mp.br/enrol/index.php?id=410', 
+                        'oficina de fotografia com celular': 'https://eventos.mpac.mp.br/enrol/index.php?id=406', 
+                        'aulão de dança de salão': 'https://eventos.mpac.mp.br/enrol/index.php?id=411', 
+                        'aulão de funcional': 'https://eventos.mpac.mp.br/enrol/index.php?id=412' 
+                    };
+                    
+                    const inscriptionLink = inscriptionLinks[titleKey];
+                    if (inscriptionLink) {
+                        modalButton.onclick = function() {
+                            window.open(inscriptionLink, '_blank');
+                        };
+                        modalButton.style.cursor = 'pointer';
+                    } else {
+                        modalButton.style.cursor = 'default';
+                    }
                 }
 
                 modal.style.display = 'flex'; // Alterado para flex para usar align-items e justify-content
