@@ -1803,18 +1803,11 @@
                 const modalButton = document.querySelector('.modal-footer button');
                 
                 if (specialMoments.includes(titleKey)) {
-                    // Para momentos especiais, mostrar convite
-                    modalButton.innerHTML = '<i class="fas fa-heart mr-2"></i>Venha participar!';
-                    modalButton.className = 'w-full bg-gradient-to-r from-orange-400 to-emerald-500 hover:from-orange-500 hover:to-emerald-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 cursor-default';
-                    modalButton.style.background = 'linear-gradient(to right, #feb70e, #21ae82)';
-                    modalButton.addEventListener('mouseenter', () => {
-                        modalButton.style.background = 'linear-gradient(to right, #f59e0b, #059669)';
-                    });
-                    modalButton.addEventListener('mouseleave', () => {
-                        modalButton.style.background = 'linear-gradient(to right, #feb70e, #21ae82)';
-                    });
+                    // Para momentos especiais, ocultar o botão
+                    modalButton.style.display = 'none';
                 } else {
                     // Para cursos com inscrição, mostrar botão normal
+                    modalButton.style.display = 'block'; // Garantir que o botão seja visível
                     modalButton.innerHTML = 'Inscreva-se';
                     modalButton.className = 'w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200';
                     
@@ -1835,7 +1828,7 @@
                         'gestão do tempo': 'https://eventos.mpac.mp.br/enrol/index.php?id=405', 
                         'oficina de comunicação assertiva': 'https://eventos.mpac.mp.br/enrol/index.php?id=414', // SUBSTITUA pelo link correto
                         'workshop de inovação e criatividade': 'https://eventos.mpac.mp.br/enrol/index.php?id=415', // SUBSTITUA pelo link correto
-                        'palestra: liderança criativa no século xxi': 'https://eventos.mpac.mp.br/enrol/index.php?id=416', // SUBSTITUA pelo link correto
+                        'palestra: liderança criativa no século xxi': '', // SUBSTITUA pelo link correto
                         'oficina: organização financeira se aprende na prática': 'https://eventos.mpac.mp.br/enrol/index.php?id=409', 
                         'oficina: privacidade criativa': 'https://eventos.mpac.mp.br/enrol/index.php?id=408', 
                         'oficina escrita criativa': 'https://eventos.mpac.mp.br/enrol/index.php?id=410', 
