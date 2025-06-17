@@ -69,11 +69,17 @@
         
         .floating {
             /* Esta classe agora é apenas um marcador, a animação está em .hero-element */
+            position: relative;
         }
         
         .card-hover {
             transition: all 0.3s ease;
             cursor: pointer; /* Adicionado para indicar que é clicável */
+        }
+        
+        /* Garantir cursor pointer para todos os botões dos cards */
+        .card-hover button {
+            cursor: pointer !important;
         }
         
         .card-hover:hover {
@@ -101,16 +107,7 @@
         
         .hero-brush-container {
             /* Esta classe agora é apenas um marcador, a animação está em .hero-element */
-        }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-            cursor: pointer; /* Adicionado para indicar que é clicável */
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
         }
 
         /* Efeito hover para imagens dos cards */
@@ -584,9 +581,9 @@
             }
         }
 
-        /* Performance: Lazy loading para imagens */
+        /* Performance: Otimização para imagens */
         img {
-            loading: lazy;
+            image-rendering: auto;
         }
         
         /* Performance: Will-change para animações */
@@ -941,7 +938,42 @@
                     </div>
                 </div>
 
-                <!-- Card 5: Gestão do Tempo -->
+                <!-- Card 5: Entre Linhas e Contos: A Palavra que Revela o Humano -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
+                    <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
+                        <img src="https://static.wixstatic.com/media/c96204_c90d4ab91947418e8e89e65ef8707b9e~mv2.png" alt="Imagem da Oficina de Mindfulness" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            Entre Linhas e Contos: A Palavra que Revela o Humano
+                        </h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
+                                presencial
+                            </span>
+                            <span class="text-sm text-gray-500">30/06/2025</span>
+                        </div>
+                        <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-clock fa-fw"></i>
+                                <span>13h às 16h</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-user fa-fw"></i>
+                                <span>Maria Thaynã</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-map-marker-alt fa-fw"></i>
+                                <span>Rio Branco - Sala multiusos Ceaf</span>
+                            </div>
+                        </div>
+                        <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                            participar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 6: Gestão do Tempo -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
                     <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
                         <img src="https://static.wixstatic.com/media/c96204_44d7742818ea45d08018f2e38e615f6a~mv2.png" alt="Imagem do Curso Gestão do Tempo" class="w-full h-full object-cover">
@@ -976,7 +1008,7 @@
                     </div>
                 </div>
 
-                <!-- Card 6: A hora da ideia -->
+                <!-- Card 7: A hora da ideia -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
                     <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
                         <img src="https://static.wixstatic.com/media/c96204_d2e1f4c6211c479cbf67ee50cd9c15fe~mv2.png" alt="Imagem do Curso Arte e Tecnologia" class="w-full h-full object-cover">
@@ -1011,7 +1043,7 @@
                     </div>
                 </div>
 
-                <!-- Card 7: Vozes do MPAC -->
+                <!-- Card 8: Vozes do MPAC -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
                     <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
                         <img src="https://static.wixstatic.com/media/c96204_d17ea895d70040859a2e0c5cc2e225c5~mv2.png" alt="Imagem do Curso Criatividade Digital" class="w-full h-full object-cover">
@@ -1046,7 +1078,7 @@
                     </div>
                 </div>
 
-                <!-- Card 7: Workshop de Design Thinking -->
+                <!-- Card 9: Workshop de Design Thinking -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
                     <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
                         <img src="https://static.wixstatic.com/media/c96204_246158977da24153928cc0853d787935~mv2.png" alt="Imagem do Workshop Design Thinking" class="w-full h-full object-cover">
@@ -1081,7 +1113,7 @@
                     </div>
                 </div>
 
-                <!-- Card 8: Entre nós - Explorando Histórias Além da Rotina -->
+                <!-- Card 10: Entre nós - Explorando Histórias Além da Rotina -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
                     <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
                         <img src="https://static.wixstatic.com/media/c96204_014b188c0fc54ddea46cfdabd220c3c3~mv2.png" alt="Imagem da Oficina de Comunicação" class="w-full h-full object-cover">
@@ -1116,7 +1148,7 @@
                     </div>
                 </div>
 
-                <!-- Card 9: Oficina: Privacidade Criativa -->
+                <!-- Card 11: Oficina: Privacidade Criativa -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
                     <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
                         <img src="https://static.wixstatic.com/media/c96204_d2e1f4c6211c479cbf67ee50cd9c15fe~mv2.png" alt="Imagem da Oficina Privacidade Criativa" class="w-full h-full object-cover">
@@ -1151,7 +1183,7 @@
                     </div>
                 </div>
 
-                <!-- Card 10: Oficina Escrita Criativa -->
+                <!-- Card 12: Oficina Escrita Criativa -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
                     <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
                         <img src="https://static.wixstatic.com/media/c96204_d746688a6bf24578853e111da71ebfc6~mv2.png" alt="Imagem da Oficina de Fotografia" class="w-full h-full object-cover">
@@ -1188,7 +1220,7 @@
                     </div>
                 </div>
 
-                <!-- Card 11: Vozes do MPAC -->
+                <!-- Card 13: Vozes do MPAC -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
                     <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
                         <img src="https://static.wixstatic.com/media/c96204_d17ea895d70040859a2e0c5cc2e225c5~mv2.png" alt="Imagem da Mesa Redonda" class="w-full h-full object-cover">
@@ -1224,7 +1256,7 @@
                     </div>
                 </div>
 
-                <!-- Card 12: Entre nós - Explorando Histórias Além da Rotina -->
+                <!-- Card 14: Entre nós - Explorando Histórias Além da Rotina -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
                     <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
                         <img src="https://static.wixstatic.com/media/c96204_014b188c0fc54ddea46cfdabd220c3c3~mv2.png" alt="Imagem do Workshop de Inovação" class="w-full h-full object-cover">
@@ -1261,7 +1293,7 @@
                     </div>
                 </div>
 
-                <!-- Card 13: Trajeto da Gratidão -->
+                <!-- Card 15: Trajeto da Gratidão -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
                     <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
                         <img src="https://static.wixstatic.com/media/c96204_866fe30d69d14275a5f95d96fc3959a4~mv2.png" alt="Imagem do Mindfulness" class="w-full h-full object-cover">
@@ -1296,7 +1328,7 @@
                     </div>
                 </div>
 
-                <!-- Card 14: A hora da ideia -->
+                <!-- Card 16: A hora da ideia -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
                     <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
                         <img src="https://static.wixstatic.com/media/c96204_d2e1f4c6211c479cbf67ee50cd9c15fe~mv2.png" alt="Imagem da Mostra de Projetos" class="w-full h-full object-cover">
@@ -1331,7 +1363,7 @@
                     </div>
                 </div>
 
-                <!-- Card 15: Entre nós - Explorando Histórias Além da Rotina -->
+                <!-- Card 17: Entre nós - Explorando Histórias Além da Rotina -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
                     <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
                         <img src="https://static.wixstatic.com/media/c96204_014b188c0fc54ddea46cfdabd220c3c3~mv2.png" alt="Imagem da Palestra de Liderança" class="w-full h-full object-cover">
@@ -1366,7 +1398,7 @@
                     </div>
                 </div>
 
-                <!-- Card 16: Vozes do MPAC Apresentação do Coral -->
+                <!-- Card 18: Vozes do MPAC Apresentação do Coral -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
                     <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
                         <img src="https://static.wixstatic.com/media/c96204_d17ea895d70040859a2e0c5cc2e225c5~mv2.png" alt="Imagem do Workshop Marketing Digital" class="w-full h-full object-cover">
@@ -1402,7 +1434,7 @@
                     </div>
                 </div>
 
-                <!-- Card 17: Oficina de fotografia com celular -->
+                <!-- Card 19: Oficina de fotografia com celular -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
                     <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
                         <img src="https://static.wixstatic.com/media/c96204_20ecf5ad55524b93aba515906ef1ed1a~mv2.png" alt="Imagem da Mesa Redonda Sustentabilidade" class="w-full h-full object-cover">
@@ -1437,7 +1469,42 @@
                     </div>
                 </div>
 
-                <!-- Card 18: Aulão de dança de salão -->
+                <!-- Card 20: Conscientização em Segurança na Internet -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
+                    <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
+                        <img src="https://static.wixstatic.com/media/c96204_75e12279939a42199cd212fad9d0007f~mv2.png" alt="Imagem da Oficina de Segurança na Internet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            Conscientização em Segurança na Internet
+                        </h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">
+                                online
+                            </span>
+                            <span class="text-sm text-gray-500">03/07/2025</span>
+                        </div>
+                        <div class="space-y-2 mb-4 text-sm text-gray-700 flex-grow">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-clock fa-fw"></i>
+                                <span>13h às 14h</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-user fa-fw"></i>
+                                <span>Oséias Haluen</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-map-marker-alt fa-fw"></i>
+                                <span>Online - Plataforma Zoom</span>
+                            </div>
+                        </div>
+                        <button class="mt-auto w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                            participar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 21: Aulão de dança de salão -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
                     <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
                         <img src="https://static.wixstatic.com/media/c96204_8951ca6cddca4dd1a2c01957e832ad6b~mv2.png" alt="Imagem da Oficina de Teatro" class="w-full h-full object-cover">
@@ -1472,7 +1539,7 @@
                     </div>
                 </div>
 
-                <!-- Card 19: Aulão de funcional -->
+                <!-- Card 22: Aulão de funcional -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col">
                     <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
                         <img src="https://static.wixstatic.com/media/c96204_c5e81c65cb644896a6b3f59a8d0f55d3~mv2.png" alt="Imagem do Encerramento" class="w-full h-full object-cover">
@@ -1704,7 +1771,6 @@
                     
                     // Limpar qualquer onclick anterior - botões do card só abrem modal
                     button.onclick = null;
-                    button.style.cursor = 'default';
                 }
             });
         }
@@ -1757,6 +1823,8 @@
                     
                     'entre nós - explorando histórias além da rotina': 'Um convite ao encontro, à escuta e à imaginação. Por meio de cartas com perguntas provocativas e inspiradoras, esta ação propõe diálogos leves, criativos e fora do comum entre colegas. Uma pausa na rotina para trocar histórias, risos e reflexões — e lembrar que sempre há algo novo a descobrir entre nós.',
                     
+                    'entre linhas e contos: a palavra que revela o humano': 'Nesta oficina, vamos explorar como a literatura revela os silêncios, os dilemas e as verdades da condição humana. Por meio da leitura reflexiva de contos clássicos, os participantes serão convidados a mergulhar no universo das palavras, refletir sobre o ser humano e transformar suas impressões em produção criativa.',
+                    
                     
                     
                     'a hora da ideia': 'Atividade rápida e leve, pensada para estimular a criatividade logo no início do dia e trazer um clima mais descontraído e inspirador para o ambiente de trabalho.',
@@ -1774,6 +1842,8 @@
                     'trajeto da gratidão - de salto em salto, espalhando gentileza e construindo um ambiente melhor': 'Um convite leve e interativo para valorizar os pequenos gestos que fazem a diferença. Ao longo de um trajeto simbólico, de salto em salto, participantes serão incentivados a praticar e espalhar palavras de gratidão, reconhecimento e gentileza. Uma experiência simples, mas poderosa, para fortalecer vínculos, inspirar empatia e tornar o ambiente institucional mais acolhedor e humano.',
                     
                     'oficina de fotografia com celular': 'Nesta oficina prática e acessível, os participantes aprenderão a explorar todo o potencial da câmera do celular para registrar imagens com mais técnica e criatividade. Serão abordados fundamentos da fotografia, dicas de composição, uso da luz, configurações essenciais, além de orientações para fotografar pessoas, ambientes e objetos. A atividade também inclui truques de edição rápida usando aplicativos gratuitos — tudo pensado para quem quer melhorar suas fotos no dia a dia, mesmo sem equipamento profissional.',
+                    
+                    'conscientização em segurança na internet': 'Em um mundo cada vez mais conectado, a segurança digital tornou-se uma responsabilidade de todos. Esta palestra tem como objetivo sensibilizar os participantes sobre os principais riscos no ambiente virtual e apresentar boas práticas para proteger informações pessoais e institucionais. Serão abordados temas como uso seguro de senhas, navegação consciente e diretrizes do ATO 045/2023, com foco em promover uma cultura de segurança no dia a dia.',
                     
                     'aulão de dança de salão': 'Neste aulão animado e inclusivo, vamos explorar passos básicos de ritmos como forró e brega, promovendo integração, alegria e movimento. Não é preciso experiência nem par fixo — basta trazer disposição para se divertir, aprender e se conectar com o outro através da dança.',
                     
@@ -1821,17 +1891,20 @@
                     // Links de inscrição para cada curso (usar o mesmo link como exemplo)
                     const inscriptionLinks = {
                         'power bi básico': 'https://eventos.mpac.mp.br/enrol/index.php?id=403',
-                        'bate-papo sobre blockchain e ia': 'https://eventos.mpac.mp.br/enrol/index.php?id=404', // SUBSTITUA pelo link correto
-                        'bate-papo sobre engenharia de prompts': 'https://eventos.mpac.mp.br/enrol/index.php?id=407', // SUBSTITUA pelo link correto
+                        'bate-papo sobre blockchain e ia': 'https://eventos.mpac.mp.br/enrol/index.php?id=404',
+                        'bate-papo sobre engenharia de prompts': 'https://eventos.mpac.mp.br/enrol/index.php?id=407',
                         // 'entre nós - explorando histórias além da rotina': momento especial sem inscrição
+                        'entre linhas e contos: a palavra que revela o humano': 'https://eventos.mpac.mp.br/enrol/index.php?id=415',
+                        'oficina de mindfulness e produtividade': 'https://eventos.mpac.mp.br/enrol/index.php?id=413',
                         'gestão do tempo': 'https://eventos.mpac.mp.br/enrol/index.php?id=405', 
-                        'oficina de comunicação assertiva': 'https://eventos.mpac.mp.br/enrol/index.php?id=414', // SUBSTITUA pelo link correto
-                        'workshop de inovação e criatividade': 'https://eventos.mpac.mp.br/enrol/index.php?id=415', // SUBSTITUA pelo link correto
-                        'palestra: liderança criativa no século xxi': '', // SUBSTITUA pelo link correto
+                        'oficina de comunicação assertiva': 'https://eventos.mpac.mp.br/enrol/index.php?id=414',
+                        'workshop de inovação e criatividade': 'https://eventos.mpac.mp.br/enrol/index.php?id=415',
+                        'palestra: liderança criativa no século xxi': '',
                         'oficina: organização financeira se aprende na prática': 'https://eventos.mpac.mp.br/enrol/index.php?id=409', 
                         'oficina: privacidade criativa': 'https://eventos.mpac.mp.br/enrol/index.php?id=408', 
                         'oficina escrita criativa': 'https://eventos.mpac.mp.br/enrol/index.php?id=410', 
                         'oficina de fotografia com celular': 'https://eventos.mpac.mp.br/enrol/index.php?id=406', 
+                        'conscientização em segurança na internet': 'https://eventos.mpac.mp.br/enrol/index.php?id=414', 
                         'aulão de dança de salão': 'https://eventos.mpac.mp.br/enrol/index.php?id=411', 
                         'aulão de funcional': 'https://eventos.mpac.mp.br/enrol/index.php?id=412' 
                     };
@@ -1841,9 +1914,6 @@
                         modalButton.onclick = function() {
                             window.open(inscriptionLink, '_blank');
                         };
-                        modalButton.style.cursor = 'pointer';
-                    } else {
-                        modalButton.style.cursor = 'default';
                     }
                 }
 
