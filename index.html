@@ -218,6 +218,12 @@
             scrollbar-color: #c1c1c1 #f1f1f1;
         }
 
+        /* Classe para desabilitar scroll da página principal */
+        .no-scroll {
+            overflow: hidden;
+            height: 100vh;
+        }
+
         /* Modal Mobile Otimizado */
         @media (max-width: 768px) {
             .modal {
@@ -1917,17 +1923,33 @@
                     }
                 }
 
+                // Desabilitar scroll da página principal
+                document.body.classList.add('no-scroll');
+                
                 modal.style.display = 'flex'; // Alterado para flex para usar align-items e justify-content
             });
         });
 
-        closeButton.addEventListener('click', () => {
+        // Função centralizada para fechar o modal
+        function closeModal() {
             modal.style.display = 'none';
-        });
+            document.body.classList.remove('no-scroll');
+        }
 
+        // Fechar modal ao clicar no botão X
+        closeButton.addEventListener('click', closeModal);
+
+        // Fechar modal ao clicar fora dele
         window.addEventListener('click', (event) => {
             if (event.target == modal) {
-                modal.style.display = 'none';
+                closeModal();
+            }
+        });
+
+        // Fechar modal ao pressionar ESC
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && modal.style.display === 'flex') {
+                closeModal();
             }
         });
     </script>
